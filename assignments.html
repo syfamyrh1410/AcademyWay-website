@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AcademyWay — Assignments</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  
+  <style>
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5deb3, #5a001f);
+  background-attachment: fixed;
+}
+.custom-navbar {
+  background: linear-gradient(to right, #5a001f, #a6033f);
+  padding: 18px 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.custom-navbar .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #ffe6ee !important;
+}
+
+.custom-navbar .nav-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #ffe6ee !important;
+}
+
+
+.custom-navbar .nav-link:hover {
+  color: #ffd1dd !important;
+  transform: scale(1.05);
+}
+
+.custom-navbar .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #ffe6ee !important;
+}
+
+.custom-navbar .nav-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #ffe6ee !important;
+}
+
+.custom-navbar .dropdown-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #5a001f !important;
+}
+
+
+.custom-navbar .form-control {
+  background-color: #3a0013;
+  border: none;
+  color: #ffdee8;
+}
+
+.custom-navbar .form-control:focus {
+  border: 2px solid #ffd1dd;
+  box-shadow: none;
+}
+
+.custom-navbar .btn-search {
+  border-color: #ffd1dd;
+  color: #ffd1dd;
+}
+.custom-navbar .btn-search:hover {
+  background-color: #ffd1dd;
+  color: #5a001f;
+}
+.search-wrapper {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.35s ease;
+}
+
+.search-wrapper input {
+    background-color: #3a0013;
+    border: none;
+    color: #ffdee8;
+}
+
+.search-wrapper input:focus {
+    border: 2px solid #ffd1dd;
+    box-shadow: none;
+}
+
+.btn-search-icon {
+    background: transparent;
+    border: none;
+    color: #ffe6ee;
+    font-size: 20px;
+}
+
+.btn-search-icon:hover {
+    color: #ffd1dd;
+    transform: scale(1.1);
+}
+
+ .hero-section {
+            position: relative;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+           
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #f9f9f9;
+            opacity: 0;
+             font-size: larger;
+        }
+
+
+        .hero-content.animate {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 1.2s ease, transform 1.2s ease;
+         font-size: larger;
+         font-family: Helvetica, sans-serif;
+         font-style: initial;
+}
+
+.hero-content {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.content-box,
+.semester-card,
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.semester-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.card.card-body {
+  border-left: 5px solid #5a001f;
+}
+
+.dark-mode {
+  background: #1a0a0f !important;
+  color: #fbe8ef !important;
+}
+
+.dark-mode .content-box,
+.dark-mode .semester-card,
+.dark-mode .card {
+  background: #2b0010 !important;
+  color: white !important;
+  border-color: #5a0020 !important;
+}
+
+.dark-mode table {
+  color: white !important;
+}
+
+.dark-mode .table-secondary {
+  background-color: #3d0016 !important;
+  color: white !important;
+}
+
+.dark-mode .navbar,
+.dark-mode .custom-navbar {
+  background: linear-gradient(to right, #2b0010, #5a0020) !important;
+}
+
+.dark-mode .footer-maroon {
+  background: linear-gradient(to right, #2b0010, #5a0020) !important;
+}
+
+.dark-mode .form-control {
+  background-color: #4a0020 !important;
+  color: white !important;
+}
+    .content-box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn-search-icon {
+    background: transparent;
+    border: none;
+    color: #ffe6ee;
+    font-size: 20px;
+}
+
+.btn-search-icon:hover {
+    color: #ffd1dd;
+    transform: scale(1.1);
+}
+
+#searchBar input {
+    background-color: #3a0013;
+    border: none;
+    color: #ffdee8;
+}
+
+#searchBar input:focus {
+    border: 2px solid #ffd1dd;
+    box-shadow: none;
+}
+    .table thead {
+      background-color: #f8f9fa;
+      font-weight: 600;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+   .semester-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  cursor: pointer;
+  border-left: 5px solid #5a001f;
+  transition: 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.semester-title {
+  font-size: 22px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+}
+
+
+.semester-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  border-left: 5px solid #5a001f;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+}
+
+main {
+  flex: 1;
+}
+
+.footer-maroon {
+  background: linear-gradient(to right, #3d0016, #a6033f);
+  color: white;
+}
+
+.footer-title,
+.footer-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: #ddd;
+  font-size: 15px;
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+
+.footer-link:hover {
+  color: white;
+}
+
+.footer-icon {
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+}
+
+.footer-about-text {
+    font-family: var(--bs-body-font-family);
+    text-align: justify;
+}
+
+
+.footer-link:hover {
+  color: white;
+}
+  
+  .footer-maroon .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: white; 
+  text-decoration: none;
+}
+
+.footer-maroon .navbar-brand:hover {
+  color: #ffd1dd;
+}
+
+.footer-maroon .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px; 
+}
+
+.footer-purple .col-md-3 {
+  flex: 1; 
+  min-width: 220px; 
+}
+
+.footer-maroon p,
+.footer-maroon a {
+  line-height: 1.6;
+}
+
+.footer-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+}
+
+
+.footer-maroon hr {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .footer-maroon .row {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .footer- .col-md-3 {
+    padding: 0;
+  }
+
+  .footer-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+
+   <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+
+       <a class="navbar-brand" href="dashboard.html">
+  <i class="bi bi-mortarboard-fill me-2"></i> AcademyWay
+</a>
+
+ 
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="dashboard.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="assignments.html">Assignment</a></li>
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        
+            <button id="searchToggle" class="btn btn-search-icon me-3">
+                <i class="bi bi-search"></i>
+            </button>
+
+           
+            <div id="searchWrapper" class="search-wrapper">
+                <input class="form-control" type="text" placeholder="Search..." />
+            </div>
+
+          
+            <button id="themeToggle" class="btn btn-outline-light">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+ <main class="container py-4">
+
+ <section class="hero-section">
+    <div class="hero-content">
+        <h1 style="font-size: 48px; font-family: Poppins, sans-serif; font-weight: 700; letter-spacing: 2px;">
+            ASSIGNMENTS DASHBOARD
+        </h1>
+    </div>
+</section>
+
+<div class="row g-4">
+
+
+<div class="col-md-4">
+  <div class="semester-card h-100" data-bs-toggle="collapse" data-bs-target="#sem1">
+    <h5 class="mb-3 semester-title">SEMESTER 1</h5>
+    <button type="button" class="btn btn-lg btn-danger">
+      Click to view the assignments
+    </button>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <div class="semester-card h-100" data-bs-toggle="collapse" data-bs-target="#sem2">
+    <h5 class="mb-3 semester-title">SEMESTER 2</h5>
+    <button type="button" class="btn btn-lg btn-danger">
+      Click to view the assignments
+    </button>
+  </div>
+</div>
+
+
+<div class="col-md-4">
+  <div class="semester-card h-100" data-bs-toggle="collapse" data-bs-target="#sem3">
+    <h5 class="mb-3 semester-title">SEMESTER 3</h5>
+    <button type="button" class="btn btn-lg btn-danger">
+      Click to view the assignments
+    </button>
+  </div>
+</div>
+
+
+
+<div id="sem1" class="collapse mt-3">
+  <div class="card card-body shadow-sm">
+    <h5 class="mb-3">SEMESTER 1 ASSIGNMENTS</h5>
+
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-secondary">
+        <tr>
+          <th>#</th>
+          <th>Course</th>
+          <th>Assignment</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>IMS111 – Introduction to Information Systems</td>
+          <td><a>Assignment 1</a></td>
+          <td>2025-11-01</td>
+          <td>2025-11-10</td>
+          <td><span class="badge bg-success">Submitted</span></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>CSC118 – Fundamentals of Programming</td>
+          <td><a>Programming Task</a></td>
+          <td>2025-11-05</td>
+          <td>2025-11-15</td>
+          <td><span class="badge bg-warning">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="sem2" class="collapse mt-3">
+  <div class="card card-body shadow-sm">
+    <h5 class="mb-3">SEMESTER 2 ASSIGNMENTS</h5>
+
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-secondary">
+        <tr>
+          <th>#</th>
+          <th>Course</th>
+          <th>Assignment</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>1</td>
+          <td>IMS222 – System Analysis & Design</td>
+          <td><a>Case Study Report</a></td>
+          <td>2025-10-20</td>
+          <td>2025-10-30</td>
+          <td><span class="badge bg-danger">Missing</span></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>IMS224 – Database Management</td>
+          <td><a>ERD & SQL Project</a></td>
+          <td>2025-10-25</td>
+          <td>2025-11-05</td>
+          <td><span class="badge bg-warning">Pending</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="sem3" class="collapse mt-3">
+  <div class="card card-body shadow-sm">
+    <h5 class="mb-3">SEMESTER 3 ASSIGNMENTS</h5>
+
+    <table class="table table-bordered table-hover align-middle">
+      <thead class="table-secondary">
+        <tr>
+          <th>#</th>
+          <th>Course</th>
+          <th>Assignment</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td>1</td>
+          <td>IMS565 – Information System Project Management</td>
+          <td><a>Individual Assignment</a></td>
+          <td>2025-11-11</td>
+          <td>2025-11-17</td>
+          <td><span class="badge bg-warning">Pending</span></td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>IMS566 – Web Application Development</td>
+          <td><a>Pair Assignment</a></td>
+          <td>2025-11-13</td>
+          <td>2025-11-17</td>
+          <td><span class="badge bg-success">Submitted</span></td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>IMS560 – Group Project</td>
+          <td><a>Group Project</a></td>
+          <td>2025-11-12</td>
+          <td>2025-11-20</td>
+          <td><span class="badge bg-danger">Missing</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  </main>
+
+<footer class="footer-maroon mt-5">
+  <div class="container py-5">
+
+    <div class="row text-white">
+
+       <div class="col-md-3 mb-4">
+    <h4 class="footer-heading d-flex align-items-center" style="font-family: 'Bebas Neue', sans-serif; font-size: 28px;">
+      <i class="bi bi-mortarboard-fill me-2" style="color: #f1f1f1;"></i>
+      AcademyWay
+    </h4>
+    <p class="medium text-justify" style="font-family: 'Inter', sans-serif; color: #f1f1f1; line-height: 1.6;">
+      A modern academic platform that helps students track assignments,
+      manage courses, and stay organized with a clean and intuitive interface.
+    </p>
+  </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Support</h5>
+        <a class="footer-link d-block" href="#">Help Center</a>
+        <a class="footer-link d-block" href="#">Report an Issue</a>
+        <a class="footer-link d-block" href="#">Feedback</a>
+        <a class="footer-link d-block" href="#">FAQs</a>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Contact Us</h5>
+        <p class="small mb-1">
+          <i class="bi bi-envelope-fill me-2"></i> support@academyway.com
+        </p>
+        <p class="small mb-1">
+          <i class="bi bi-telephone-fill me-2"></i> +6012-3456789
+        </p>
+        <p class="small">
+          <i class="bi bi-geo-alt-fill me-2"></i> Shah Alam, Selangor
+        </p>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 my-3">
+      <a href="https://www.linkedin.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://x.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-twitter-x"></i>
+      </a>
+      <a href="https://www.instagram.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-facebook"></i>
+      </a>
+    </div>
+
+    <hr class="border-light">
+
+    <div class="text-center text-white-50 small">
+      © 2025 AcademyWay. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const themeToggle = document.getElementById("themeToggle");
+const userTheme = localStorage.getItem("theme");
+
+if (userTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeToggle.innerHTML = `<i class="bi bi-brightness-high"></i>`;
+}
+
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.innerHTML = `<i class="bi bi-brightness-high"></i>`;
+    } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.innerHTML = `<i class="bi bi-moon-stars"></i>`;
+    }
+});
+
+const searchToggle = document.getElementById("searchToggle");
+const searchWrapper = document.getElementById("searchWrapper");
+
+let searchOpen = false;
+
+searchToggle.addEventListener("click", () => {
+    searchOpen = !searchOpen;
+
+    if (searchOpen) {
+        searchWrapper.style.width = "180px";
+        searchWrapper.querySelector("input").focus();
+    } else {
+        searchWrapper.style.width = "0px";
+    }
+});
+
+ document.addEventListener("DOMContentLoaded", () => {
+                const heroContent = document.querySelector(".hero-content");
+        
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                heroContent.classList.add("animate");
+                            }
+                        });
+                    },
+                    { threshold: 0.1 } 
+                );
+        
+                observer.observe(heroContent);
+            });
+</script>
+
+</body>
+</html>

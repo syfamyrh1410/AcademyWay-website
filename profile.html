@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AcademyWay — Assignments</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+  
+  <style>
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f5deb3, #5a001f);
+  background-attachment: fixed;
+}
+.custom-navbar {
+  background: linear-gradient(to right, #5a001f, #a6033f);
+  padding: 18px 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+.custom-navbar .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #ffe6ee !important;
+}
+.custom-navbar .nav-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #ffe6ee !important;
+}
+.custom-navbar .nav-link:hover {
+  color: #ffd1dd !important;
+  transform: scale(1.05);
+}
+.custom-navbar .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #ffe6ee !important;
+}
+.custom-navbar .nav-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: #ffe6ee !important;
+}
+.custom-navbar .dropdown-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #5a001f !important;
+}
+.custom-navbar .form-control {
+  background-color: #3a0013;
+  border: none;
+  color: #ffdee8;
+}
+.custom-navbar .form-control:focus {
+  border: 2px solid #ffd1dd;
+  box-shadow: none;
+}
+.custom-navbar .btn-search {
+  border-color: #ffd1dd;
+  color: #ffd1dd;
+}
+.custom-navbar .btn-search:hover {
+  background-color: #ffd1dd;
+  color: #5a001f;
+}
+.search-wrapper {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.35s ease;
+}
+.search-wrapper input {
+    background-color: #3a0013;
+    border: none;
+    color: #ffdee8;
+}
+.search-wrapper input:focus {
+    border: 2px solid #ffd1dd;
+    box-shadow: none;
+}
+.btn-search-icon {
+    background: transparent;
+    border: none;
+    color: #ffe6ee;
+    font-size: 20px;
+}
+.btn-search-icon:hover {
+    color: #ffd1dd;
+    transform: scale(1.1);
+}
+.dark-mode {
+  background: #1a0a0f !important;
+}
+.dark-mode .content-box,
+.dark-mode .semester-card,
+.dark-mode .card {
+  background: #2b0010 !important;
+  color: white !important;
+  border-color: #5a0020 !important;
+}
+.dark-mode table {
+  color: white !important;
+}
+.dark-mode .table-secondary {
+  background-color: #3d0016 !important;
+  color: white !important;
+}
+.dark-mode .navbar,
+.dark-mode .custom-navbar {
+  background: linear-gradient(to right, #2b0010, #5a0020) !important;
+}
+.dark-mode .footer-purple {
+  background: linear-gradient(to right, #2b0010, #5a0020) !important;
+}
+.dark-mode .form-control {
+  background-color: #4a0020 !important;
+  color: white !important;
+}
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #ffffff !important;
+  opacity: 0.7 !important;
+}
+.dark-mode .btn-primary {
+  background-color: #4a0020 !important;
+  border-color: #4a0020 !important;
+  color: #ffffff !important;
+}
+.content-box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+.btn-search-icon {
+    background: transparent;
+    border: none;
+    color: #ffe6ee;
+    font-size: 20px;
+}
+.btn-search-icon:hover {
+    color: #ffd1dd;
+    transform: scale(1.1);
+}
+#searchBar input {
+    background-color: #3a0013;
+    border: none;
+    color: #ffdee8;
+}
+#searchBar input:focus {
+    border: 2px solid #ffd1dd;
+    box-shadow: none;
+}
+.profile-banner {
+  background: linear-gradient(to right, #5a001f, #a6033f);
+  border-radius: 20px;
+}
+.profile-img-lg {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+}
+.info-card {
+  background: white;
+  border-radius: 15px;
+  border-left: 5px solid #5a001f;
+  transition: 0.3s ease;
+}
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.info-title {
+  background: #5a001f;
+  color: white;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #5a001f;
+  object-fit: cover;
+}
+.btn-maroon {
+  background: #5a001f;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+.btn-maroon:hover {
+  background: #a6033f;
+  color: white;
+  transform: scale(1.02);
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+}
+main {
+  flex: 1;
+}
+.footer-maroon {
+  background: linear-gradient(to right, #3d0016, #a6033f);
+  color: white;
+}
+.footer-title,
+.footer-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.footer-link {
+  color: #ddd;
+  font-size: 15px;
+  text-decoration: none;
+  margin-bottom: 6px;
+}
+.footer-link:hover {
+  color: white;
+}
+.footer-icon {
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-width: 2px;
+}
+.footer-about-text {
+    font-family: var(--bs-body-font-family);
+    text-align: justify;
+}
+.footer-link:hover {
+  color: white;
+}
+  .footer-maroon .navbar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: white; 
+  text-decoration: none;
+}
+.footer-maroon .navbar-brand:hover {
+  color: #ffd1dd;
+}
+.footer-maroon .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px; 
+}
+.footer-maroon .col-md-3 {
+  flex: 1; 
+  min-width: 220px; 
+}
+.footer-maroon p,
+.footer-maroon a {
+  line-height: 1.6;
+}
+.footer-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 5px;
+}
+.footer-maroon hr {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .footer-maroon .row {
+    flex-direction: column;
+    gap: 25px;
+    text-align: center;
+}
+.footer-maroon.col-md-3 {
+    padding: 0;
+}
+.footer-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+
+</style>
+</head>
+ 
+
+<body>
+
+   <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+
+       <a class="navbar-brand" href="dashboard.html">
+  <i class="bi bi-mortarboard-fill me-2"></i> AcademyWay
+</a>
+
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarScroll">
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" href="dashboard.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="assignments.html">Assignment</a></li>
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <button id="searchToggle" class="btn btn-search-icon me-3">
+                <i class="bi bi-search"></i>
+            </button>
+
+            <div id="searchWrapper" class="search-wrapper">
+                <input class="form-control" type="text" placeholder="Search..." />
+            </div>
+
+            <button id="themeToggle" class="btn btn-outline-light">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+
+        </div>
+    </div>
+</nav>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="saveToast" class="toast align-items-center text-bg-success border-0">
+    <div class="d-flex">
+      <div class="toast-body">Information updated successfully!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+
+<main class="container py-5">
+
+  <div class="profile-banner shadow-sm mb-4 p-4 rounded-4 text-white">
+    <div class="d-flex align-items-center">
+<img src="profile.jpeg" id="profileAvatar" class="profile-img-lg me-4">
+     
+      <div>
+        <h2 class="fw-bold mb-1">SALSABILA BINTI SUHAIME</h2>
+        <p class="mb-1">BACHELOR OF INFORMATION SCIENCE (HONS) INFORMATION SYSTEMS MANAGEMENT</p>
+        <p class="small mb-0"><i class="bi bi-geo-alt-fill me-2"></i>UITM PUNCAK PERDANA CAMPUS</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row g-4">
+
+    <div class="col-lg-4">
+      <div class="info-card p-4 rounded-4 shadow-sm">
+        <h5 class="info-title">Profile Picture</h5>
+
+        <div class="text-center">
+<img src="profile.jpeg" id="bannerAvatar" class="profile-img-lg me-4">
+
+
+          <input type="file" id="avatarInput" class="form-control" accept="image/*">
+        <h5 class="info-title mt-3" data-bs-toggle="collapse" data-bs-target="#" style="cursor:pointer;">
+  Update Picture
+</h6>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="info-card p-4 rounded-4 shadow-sm">
+        <h5 class="info-title">Contact Information</h5>
+
+        <p><strong>Phone:</strong> <span id="contactPhone">012-6988763</span></p>
+        <p><strong>Email:</strong> 2025122097@student.uitm.edu.my</p>
+        <p><strong>Address:</strong> <span id="contactAddress">Jalan Bunga Mawar, Kampung Tersusun Sungai Bakap, Sungkai 31500 Perak</span></p>
+
+        <h6 class="info-title mt-3" data-bs-toggle="collapse" data-bs-target="#editContact" style="cursor:pointer;">
+  Update Contact Info
+</h6>
+
+
+        <div id="editContact" class="collapse mt-3">
+          <form id="contactForm">
+            <div class="mb-2">
+              <label class="form-label">Phone Number</label>
+              <input class="form-control" id="phoneInput" placeholder="Enter phone">
+            </div>
+            <div class="mb-2">
+              <label class="form-label">Address</label>
+              <textarea class="form-control" id="addressInput" placeholder="Enter address"></textarea>
+            </div>
+            <button class="btn btn-maroon w-100">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="info-card p-4 rounded-4 shadow-sm">
+        <h5 class="info-title">Account Settings</h5>
+
+        <p><strong>Username:</strong> <span id="usernameDisplay">salsabilasuhaime</span></p>
+        <p><strong>Password:</strong> ••••••••••</p>
+
+        <h6 class="info-title mt-3" data-bs-toggle="collapse" data-bs-target="#editAccount" style="cursor:pointer;">
+  Edit Account Settings
+</h6>
+
+
+        <div id="editAccount" class="collapse mt-3">
+          <form id="accountForm">
+            <div class="mb-2">
+              <label class="form-label">Username</label>
+              <input class="form-control" id="usernameInput" placeholder="Enter new username">
+            </div>
+            <div class="mb-2">
+              <label class="form-label">New Password</label>
+              <input type="password" class="form-control" id="passwordInput" placeholder="Enter new password">
+            </div>
+            <button class="btn btn-maroon w-100">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer-maroon mt-5">
+  <div class="container py-5">
+
+    <div class="row text-white">
+
+       <div class="col-md-3 mb-4">
+    <h4 class="footer-heading d-flex align-items-center" style="font-family: 'Bebas Neue', sans-serif; font-size: 28px;">
+      <i class="bi bi-mortarboard-fill me-2" style="color: #f1f1f1;"></i>
+      AcademyWay
+    </h4>
+    <p class="medium text-justify" style="font-family: 'Inter', sans-serif; color: #f1f1f1; line-height: 1.6;">
+      A modern academic platform that helps students track assignments,
+      manage courses, and stay organized with a clean and intuitive interface.
+    </p>
+  </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Support</h5>
+        <a class="footer-link d-block" href="#">Help Center</a>
+        <a class="footer-link d-block" href="#">Report an Issue</a>
+        <a class="footer-link d-block" href="#">Feedback</a>
+        <a class="footer-link d-block" href="#">FAQs</a>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <h5 class="footer-title">Contact Us</h5>
+        <p class="small mb-1">
+          <i class="bi bi-envelope-fill me-2"></i> support@academyway.com
+        </p>
+        <p class="small mb-1">
+          <i class="bi bi-telephone-fill me-2"></i> +6012-3456789
+        </p>
+        <p class="small">
+          <i class="bi bi-geo-alt-fill me-2"></i> Shah Alam, Selangor
+        </p>
+      </div>
+
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 my-3">
+      <a href="https://www.linkedin.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-linkedin"></i>
+      </a>
+      <a href="https://x.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-twitter-x"></i>
+      </a>
+      <a href="https://www.instagram.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/" class="btn btn-outline-light rounded-circle footer-icon">
+        <i class="bi bi-facebook"></i>
+      </a>
+    </div>
+
+    <hr class="border-light">
+
+    <div class="text-center text-white-50 small">
+      © 2025 AcademyWay. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.innerHTML = `<i class="bi bi-brightness-high"></i>`;
+    } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.innerHTML = `<i class="bi bi-moon-stars"></i>`;
+    }
+});
+
+const searchToggle = document.getElementById("searchToggle");
+const searchWrapper = document.getElementById("searchWrapper");
+
+let searchOpen = false;
+
+searchToggle.addEventListener("click", () => {
+    searchOpen = !searchOpen;
+
+    if (searchOpen) {
+        searchWrapper.style.width = "180px";
+        searchWrapper.querySelector("input").focus();
+    } else {
+        searchWrapper.style.width = "0px";
+    }
+});
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+
+document.getElementById("avatarInput").addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+
+            // Update both pictures
+            document.getElementById("avatarPreviewBanner").src = e.target.result;
+            document.getElementById("avatarPreviewSmall").src = e.target.result;
+
+        };
+        reader.readAsDataURL(file);
+    }
+});
+document.getElementById("avatarInput").addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+
+            document.getElementById("avatarPreviewBanner").src = e.target.result;
+            document.getElementById("avatarPreviewSmall").src = e.target.result;
+
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+  document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("contactPhone").innerText = document.getElementById("phoneInput").value;
+    document.getElementById("contactAddress").innerText = document.getElementById("addressInput").value;
+    new bootstrap.Toast(document.getElementById('saveToast')).show();
+  });
+
+  document.getElementById("accountForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("usernameDisplay").innerText = document.getElementById("usernameInput").value;
+    new bootstrap.Toast(document.getElementById('saveToast')).show();
+  });
+
+</script>
+</body>
+</html>

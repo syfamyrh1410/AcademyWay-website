@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Courses — AcademyWay</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* --- YOUR ORIGINAL CSS (UNCHANGED) --- */
+    /* Only minimal cleaning done; no design changes */
+    
+    :root{
+      --purple-900: #3b024f;
+      --purple-800: #4b0a66;
+      --purple-700: #650591;
+      --accent: #ffd6ff;
+      --card-bg: rgba(255,255,255,0.04);
+    }
+
+    html,body{
+      height:100%;
+      font-family: 'Inter', system-ui;
+      background: linear-gradient(180deg, #9f0b47 0%, #7a0a4f 60%);
+      color: #f6eef8;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #f5deb3, #5a001f);
+      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .custom-navbar {
+      background: linear-gradient(to right, #5a001f, #a6033f); 
+      padding: 18px 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    }
+
+    .custom-navbar .navbar-brand {
+      font-family: 'Bebas Neue';
+      font-size: 36px;
+      letter-spacing: 2px;
+      color: #ffe6ee !important;
+    }
+
+    .custom-navbar .nav-link {
+      font-family: 'Bebas Neue';
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: #ffe6ee !important;
+    }
+
+    .custom-navbar .nav-link:hover {
+      color: #ffd1dd !important;
+      transform: scale(1.05);
+    }
+
+    /* Search */
+    .search-wrapper {
+      width: 0;
+      overflow: hidden;
+      transition: width 0.35s ease;
+    }
+
+    .search-wrapper input {
+      background-color: #3a0013;
+      border: none;
+      color: #ffdee8;
+    }
+
+    /* Dark Mode */
+    .dark-mode {
+      background: #1a0a0f !important;
+      color: #fbe8ef !important;
+    }
+
+    /* Course Cards */
+    .course-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .icon-bubble{
+      width:44px; height:44px; 
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .chart-card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    footer.footer-purple {
+      background: linear-gradient(to right, #3d0016, #a6033f);
+      color: white;
+      margin-top: auto;
+    }
+  </style><!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons (optional, small icon set) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- ApexCharts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+  <style>
+    body {
+min-height: 100vh;
+background: linear-gradient(to bottom, #f5deb3, #5a001f); background-attachment: fixed;
+}
+.custom-navbar {
+background: linear-gradient(to right, #5a001f, #a6033f); padding: 18px 25px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+.custom-navbar .navbar-brand {
+font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+letter-spacing: 2px; color: #ffe6ee !important;
+}
+.custom-navbar .nav-link {
+font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+letter-spacing: 1px; color: #ffe6ee !important;
+}
+
+
+.custom-navbar .nav-link:hover {
+ 
+color: #ffd1dd !important; transform: scale(1.05);
+}
+
+/* MAIN CONTAINER */
+    .container-main { padding-top:22px; padding-bottom:44px; }
+
+    /* Cards style */
+    .stat-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 4px solid rgba(58, 9, 2, 0.9); /* purple left accent */
+      box-shadow: 0 6px 18px rgba(11,5,16,0.45);
+      transition: transform .18s ease, box-shadow .18s ease;
+      border-radius: 12px;
+    }
+    .stat-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(128, 2, 2, 0.55); }
+
+    .stat-card h5 { color: #eae0e0; font-weight:600; margin-bottom:6px; }
+    .stat-value { font-size:1.7rem; font-weight:700; color: #421111; letter-spacing:.3px; }
+    .stat-muted { font-size:.78rem; color: rgba(51, 12, 12, 0.7); }
+
+    /* Icon bubble */
+    .icon-bubble{
+      width:44px;height:44px;border-radius:10px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.04); color: #f6eeee;
+      box-shadow: 0 6px 14px rgba(11,5,16,0.45);
+    }
+
+    /* Table card */
+    .table-card {
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:12px;
+      padding:16px;
+      color: #ece6e6;
+    }
+    .table-card thead th { color: rgba(218, 102, 102, 0.9); border-bottom: 1px dashed rgba(255,255,255,0.04); }
+
+    /* progress / charts card */
+    .tracker-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 22px rgba(11,5,16,0.45);
+    }
+
+    /* small helpers */
+    .muted-2 { color: rgba(255,255,255,0.65); font-size:.88rem; }
+    .small-chip { font-size:.78rem; padding:.2rem .55rem; border-radius:8px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); }
+
+    /* apex/chart containers */
+    #chart { max-width: 720px; margin: 16px auto; }
+
+    /* responsive tweaks */
+    @media (max-width:767px){
+      .icon-bubble { width:40px;height:40px;}
+      .stat-value { font-size:1.3rem; }
+      #chart { max-width:100%; }
+      .carousel-inner img { height:220px; }
+    }
+
+    /* make carousel images rounded in card */
+    .rounded-carousel { border-radius:12px; overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+
+/* DROPDOWN */
+.custom-navbar .navbar-brand {
+font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+letter-spacing: 2px; color: #ffe6ee !important;
+}
+
+
+.custom-navbar .nav-link {
+font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+letter-spacing: 1px; color: #ffe6ee !important;
+}
+
+
+.custom-navbar .dropdown-item { font-family: 'Bebas Neue', sans-serif; font-size: 18px;
+letter-spacing: 1px;
+color: #5a001f !important;
+}
+ 
+/* SEARCH BAR */
+.custom-navbar .form-control { background-color: #3a0013; border: none;
+color: #ffdee8;
+}
+
+
+.custom-navbar .form-control:focus { border: 2px solid #ffd1dd;
+box-shadow: none;
+}
+
+
+.custom-navbar .btn-search { border-color: #ffd1dd; color: #ffd1dd;
+}
+.custom-navbar .btn-search:hover { background-color: #ffd1dd;
+color: #5a001f;
+}
+.search-wrapper { width: 0;
+overflow: hidden;
+transition: width 0.35s ease;
+}
+ 
+.search-wrapper input {
+background-color: #3a0013; border: none;
+color: #ffdee8;
+}
+
+
+.search-wrapper input:focus { border: 2px solid #ffd1dd; box-shadow: none;
+}
+
+
+.btn-search-icon {
+background: transparent; border: none;
+color: #ffe6ee; font-size: 20px;
+}
+
+
+.btn-search-icon:hover { color: #ffd1dd; transform: scale(1.1);
+}
+
+
+.dark-mode {
+background: #1a0a0f !important; color: #fbe8ef !important;
+ 
+}
+
+
+.dark-mode .content-box,
+.dark-mode .semester-card,
+.dark-mode .card {
+background: #2b0010 !important; color: white !important;
+border-color: #843c55 !important;
+}
+
+
+.dark-mode table { color: white !important;
+}
+
+
+.dark-mode .table-secondary {
+background-color: #3d0016 !important; color: white !important;
+}
+
+
+.dark-mode .navbar,
+.dark-mode .custom-navbar {
+background: linear-gradient(to right, #2b0010, #5a0020) !important;
+}
+
+
+.dark-mode .footer-purple {
+background: linear-gradient(to right, #2b0010, #5a0020) !important;
+ 
+}
+
+
+.dark-mode .form-control {
+background-color: #763451 !important; color: white !important;
+}
+.content-box { background: white; padding: 25px; border-radius: 10px;
+box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+
+.btn-search-icon {
+background: transparent; border: none;
+color: #ffe6ee; font-size: 20px;
+}
+
+
+.btn-search-icon:hover { color: #ffd1dd; transform: scale(1.1);
+}
+
+
+#searchBar input {
+ 
+background-color: #3a0013; border: none;
+color: #ffdee8;
+}
+
+
+#searchBar input:focus { border: 2px solid #ffd1dd; box-shadow: none;
+}
+
+html, body {
+height: 100%;
+margin: 0;
+}
+
+
+body { display: flex;
+flex-direction: column; min-height: 200vh;
+}
+
+
+main { flex: 1;
+}
+
+
+.footer-purple {
+background: linear-gradient(to right, #3d0016, #a6033f); color: white;
+}
+ 
+.footer-title,
+.footer-heading {
+font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+letter-spacing: 1px; margin-bottom: 10px;
+}
+
+
+.footer-link { color: #ddd; font-size: 15px;
+text-decoration: none; margin-bottom: 6px;
+}
+
+
+.footer-link:hover { color: white;
+}
+
+
+.footer-icon { width: 45px; height: 45px;
+font-size: 22px; display: flex;
+justify-content: center; align-items: center;
+ 
+border-width: 2px;
+}
+
+
+.footer-about-text {
+font-family: var(--bs-body-font-family); text-align: justify;
+}
+
+
+.footer-link:hover { color: white;
+}
+
+
+.footer-purple .navbar-brand {
+font-family: 'Bebas Neue', sans-serif; font-size: 36px;
+letter-spacing: 3px;
+color: white; /* or #ffe6ee if you want the same as navbar */ text-decoration: none;
+}
+
+
+.footer-purple .navbar-brand:hover { color: #ffd1dd;
+}
+
+
+.footer-purple .row { display: flex;
+ 
+justify-content: space-between; align-items: flex-start;
+gap: 40px; /* spacing between columns */
+}
+
+
+.footer-purple .col-md-3 {
+flex: 1; /* make all columns equal width */ min-width: 220px;
+}
+
+
+.footer-purple p,
+.footer-purple a { line-height: 1.6;
+}
+
+
+.footer-icon { width: 48px; height: 48px; margin: 0 5px;
+}
+
+
+.footer-purple hr { margin-top: 25px; margin-bottom: 15px;
+}
+ 
+@media (max-width: 768px) {
+.footer-purple .row { flex-direction: column; gap: 25px;
+text-align: center;
+}
+
+
+.footer-purple .col-md-3 { padding: 0;
+}
+
+
+.footer-icon { width: 45px; height: 45px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="dashboard.html">
+      <i class="bi bi-mortarboard-fill me-2"></i> AcademyWay
+    </a>
+
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="dashboard.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">More</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="assignment.html">Assignment</a></li>
+            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="login.html">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Search -->
+      <button id="searchToggle" class="btn btn-search-icon me-3">
+        <i class="bi bi-search"></i>
+      </button>
+
+      <div id="searchWrapper" class="search-wrapper">
+        <input class="form-control" type="text" placeholder="Search..." />
+      </div>
+
+      <!-- Dark Mode -->
+      <button id="themeToggle" class="btn btn-outline-light ms-3">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- MAIN CONTENT -->
+<main class="container py-4">
+
+  <!-- SEMESTER SELECTOR -->
+  <div class="semester-card mb-4 p-3">
+    <h5 class="mb-3">Courses by Semester</h5>
+    <div class="row g-2">
+      <div class="col-md-4"><button class="btn w-100 active" data-bs-toggle="collapse" data-bs-target="#sem1">Semester 1</button></div>
+      <div class="col-md-4"><button class="btn w-100" data-bs-toggle="collapse" data-bs-target="#sem2">Semester 2</button></div>
+      <div class="col-md-4"><button class="btn w-100" data-bs-toggle="collapse" data-bs-target="#sem3">Semester 3</button></div>
+    </div>
+  </div>
+
+  <!-- SEMESTER 1 -->
+  <section class="row g-4 collapse show" id="sem1">
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-laptop"></i></div>
+        <div>
+          <h5>IMS111</h5>
+          <p class="mb-1">Introduction to Information Systems</p>
+          <span class="small-chip">3 credits</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-code-slash"></i></div>
+        <div>
+          <h5>CSC118</h5>
+          <p class="mb-1">Fundamentals of Programming</p>
+          <span class="small-chip">4 credits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMESTER 2 -->
+  <section class="row g-4 collapse" id="sem2">
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-diagram-3"></i></div>
+        <div>
+          <h5>IMS222</h5>
+          <p class="mb-1">System Analysis & Design</p>
+          <span class="small-chip">3 credits</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-database"></i></div>
+        <div>
+          <h5>IMS224</h5>
+          <p class="mb-1">Database Management</p>
+          <span class="small-chip">3 credits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEMESTER 3 -->
+  <section class="row g-4 collapse" id="sem3">
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-projector"></i></div>
+        <div>
+          <h5>IMS565</h5>
+          <p class="mb-1">Information System Project Management</p>
+          <span class="small-chip">3 credits</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="course-card d-flex gap-3">
+        <div class="icon-bubble"><i class="bi bi-globe"></i></div>
+        <div>
+          <h5>IMS566</h5>
+          <p class="mb-1">Web Application Development</p>
+          <span class="small-chip">4 credits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHART -->
+  <div class="chart-card mt-4">
+    <h5>Courses Distribution by Semester</h5>
+    <canvas id="coursesChart" height="150"></canvas>
+  </div>
+
+</main>
+
+
+
+  <!-- TOAST (bottom-right) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:1080">
+    <div id="liveToast" class="toast align-items-center text-bg-dark border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Welcome back, <strong>Salsabila</strong> — your dashboard is ready.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-purple mt-5">
+<div class="container py-5">
+
+
+<div class="row text-white">
+
+
+<div class="col-md-3 mb-4">
+ 
+<h4 class="footer-heading d-flex align-items-center" style="font-family: 'Bebas Neue', sans-serif; font-size: 28px;">
+<i class="bi bi-mortarboard-fill me-2" style="color: #f1f1f1;"></i> AcademyWay
+</h4>
+<p class="medium text-justify" style="font-family: 'Inter', sans-serif; color: #f1f1f1; line-height: 1.6;">
+A modern academic platform that helps students track assignments, manage courses, and stay organized with a clean and intuitive interface.
+</p>
+</div>
+
+
+<div class="col-md-3 mb-4">
+<h5 class="footer-title">Support</h5>
+<a class="footer-link d-block" href="#">Help Center</a>
+<a class="footer-link d-block" href="#">Report an Issue</a>
+<a class="footer-link d-block" href="#">Feedback</a>
+<a class="footer-link d-block" href="#">FAQs</a>
+</div>
+
+
+<div class="col-md-3 mb-4">
+<h5 class="footer-title">Contact Us</h5>
+<p class="small mb-1">
+<i class="bi bi-envelope-fill me-2"></i> support@academyway.com
+</p>
+<p class="small mb-1">
+<i class="bi bi-telephone-fill me-2"></i> +6012-3456789
+ 
+</p>
+<p class="small">
+<i class="bi bi-geo-alt-fill me-2"></i> Shah Alam, Selangor
+</p>
+</div>
+
+
+</div>
+
+
+
+
+<div class="d-flex justify-content-center gap-3 my-3">
+<a href="#" class="btn btn-outline-light rounded-circle footer-icon">
+<i class="bi bi-linkedin"></i>
+</a>
+<a href="#" class="btn btn-outline-light rounded-circle footer-icon">
+<i class="bi bi-twitter-x"></i>
+</a>
+<a href="#" class="btn btn-outline-light rounded-circle footer-icon">
+<i class="bi bi-instagram"></i>
+</a>
+<a href="#" class="btn btn-outline-light rounded-circle footer-icon">
+<i class="bi bi-facebook"></i>
+</a>
+</div>
+
+
+<hr class="border-light">
+ 
+<div class="text-center text-white-50 small">
+© 2025 AcademyWay. All Rights Reserved.
+</div>
+
+
+</div>
+</footer>
+
+
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+  /* ============================
+       SEARCH BAR TOGGLE
+  ============================= */
+  const searchToggle = document.getElementById("searchToggle");
+  const searchWrapper = document.getElementById("searchWrapper");
+
+  searchToggle.addEventListener("click", () => {
+    searchWrapper.style.width = searchWrapper.style.width === "200px" ? "0" : "200px";
+  });
+
+
+  /* ============================
+       DARK MODE TOGGLE
+  ============================= */
+  const themeToggle = document.getElementById("themeToggle");
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+
+  /* ============================
+       CHART.JS — WORKING VERSION
+  ============================= */
+  const ctx = document.getElementById('coursesChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Semester 1', 'Semester 2', 'Semester 3'],
+      datasets: [{
+        label: 'Courses',
+        data: [2, 2, 2],
+        backgroundColor: 'rgba(101, 5, 145, 0.8)',
+        borderColor: '#650591',
+        borderWidth: 2,
+        borderRadius: 6,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { 
+          beginAtZero: true,
+          ticks: { color: "#fff" }
+        },
+        x: { 
+          ticks: { color: "#fff" }
+        }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
